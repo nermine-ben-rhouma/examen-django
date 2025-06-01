@@ -61,6 +61,9 @@ celery -A advanced_templates worker --loglevel=info --pool=solo
 // Run Django server
 
 python manage.py runserver
+### 8. Tester l'API GraphQL
+http://127.0.0.1:8000/graphql/
+
 
 
 
