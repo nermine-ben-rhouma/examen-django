@@ -1,69 +1,104 @@
-# Django Project - Very Advanced Techniques in Django Templates (SSR)
+# 🧠 Django Project – Very Advanced Techniques in Django Templates (SSR)
 
-##  Exam Project - Web Programming in Python (2025)
-> Student: Ben Rhouma Nermine
-> University: Sesame University  
-> Professor: Chaouki Bayoudhi
+## 🎓 Exam Project – Web Programming in Python (2025)
+> 👩‍🎓 Student: Ben Rhouma Nermine  
+> 🏛️ University: Sesame University  
+> 👨‍🏫 Professor: Chaouki Bayoudhi
 
 ---
 
-## Description
+## 📌 Description
 
-This project implements advanced dynamic template rendering using Django with:
-- Dynamic HTML components stored in database
-- JSON-driven template rendering (SSR)
-- REST and GraphQL APIs for CRUD
-- Celery background task to pre-render components
-- JWT-based authentication for API access
-## Technologies Used
+This project implements advanced dynamic template rendering using Django:
+
+- 🧱 Dynamic HTML components stored in the database
+- 🔄 JSON-driven server-side rendering (SSR) using Django templates
+- 🔐 JWT-protected REST API with DRF
+- 🧪 GraphQL API via Graphene
+- ⚙️ Celery background task for pre-rendering HTML
+- 🤖 Local AI Integration using **TextBlob**
+
+---
+
+## 🛠️ Technologies Used
+
 - Python 3.10+
 - Django 4+
 - Django REST Framework
 - Graphene-Django (GraphQL)
 - Celery + Redis
 - djangorestframework-simplejwt (JWT)
-## Installation (Local Setup)
+- TextBlob (local AI sentiment analysis)
+
+---
+
+## ⚙️ Installation (Local Setup)
 
 ### 1. Clone the project and create a virtual environment
 
+```bash
 python -m venv env
-env\Scripts\activate  
+env\Scripts\activate
+2. Install dependencies
+bash
 
-### 2. Install dependencies
 pip install -r requirements.txt
-### 3. Apply database migrations
+3. Apply database migrations
+bash
+
 python manage.py migrate
-### 4. Create superuser (for JWT login)
+4. Create a superuser
+bash
+
 python manage.py createsuperuser
+🔐 JWT Authentication (Postman)
+5. Get an access token
+POST http://127.0.0.1:8000/api/token/
+Body (raw / JSON):
 
-// JWT Authentication
-
-### 5. Get a token (POST)
-URL : http://127.0.0.1:8000/api/token/
-Body :
 json
 
 {
   "username": "nermine",
   "password": "Z22ZrCa3i"
 }
-Add header for authenticated requests:
-Authorization: Bearer ACCESS_TOKEN
+➡️ Add this to headers for authenticated requests:
 
-// Celery + Redis (SSR Pre-rendering)
-### 6. Start Redis (via Docker)
+makefile
+
+Authorization: Bearer <ACCESS_TOKEN>
+⚙️ Celery + Redis (for background tasks)
+6. Start Redis (via Docker)
+bash
 
 docker run -d -p 6379:6379 redis
-### 7. Start Celery (Windows)
-
+7. Start Celery (Windows)
+bash
 celery -A advanced_templates worker --loglevel=info --pool=solo
-
-// Run Django server
+🚀 Start the Django server
+bash
 
 python manage.py runserver
-### 8. Tester l'API GraphQL
+🔎 GraphQL API (Optional)
+8. Test GraphQL in browser
+Open:
+
 http://127.0.0.1:8000/graphql/
+Example query:
 
+graphql
 
+{
+  allComponents {
+    id
+    name
+    renderedHtml
+  }
+}
+🌍 Useful URLs
+🔗 API REST: http://127.0.0.1:8000/api/components/
 
+🖥️ SSR Render: http://127.0.0.1:8000/api/render/ID/
+
+🔐 Admin panel: http://127.0.0.1:8000/admin/
 
